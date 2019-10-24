@@ -22,7 +22,6 @@ int FibSequence(int input){
         previous2 = previous1;
         previous1 = term;
     }
-
     return term;
 }
 
