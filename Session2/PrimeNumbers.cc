@@ -40,7 +40,7 @@ int main(){
     while(true){
         cout << "This program prints the series of prime numbers upto N. What is the value of N?" << endl;
         cin >> N;
-        if (N <= 0){
+        if (N <= 1){
             cout << "Term invalid! Your input has to be greater than 1. Please try again." << endl;
             continue;
         }
