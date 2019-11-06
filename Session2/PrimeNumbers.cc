@@ -2,7 +2,7 @@
 //CRSid: zsjl2
 //Session 2
 //Program Title: PrimeNumbers.cc
-//Description: This program prints out all prime numbers less than or equal to N.
+//Description: This program prints out all prime numbers less than or equal to N. 
 
 
 #include <iostream>
@@ -49,7 +49,7 @@ int main(){
         PrimeNumbers(N);
         break;
     }
-    
+
     cout << "The series has ended." << endl;
     return 0;
 }
