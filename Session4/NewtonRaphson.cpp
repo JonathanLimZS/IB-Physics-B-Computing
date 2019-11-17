@@ -13,7 +13,7 @@ using namespace std;
 
 //Function prototypes for call by reference:
 float prompt_loop(float &c);
-float MySquareRoot(float square);
+float NRRoot(float square);
 
 
 
@@ -23,9 +23,9 @@ int main(){
     c = prompt_loop(c);
 
     //Printing out a test line (for debugging purposes)
-    cout << "Now finding the square root of " << c << " ..." << endl;
+    cout << "Now finding the square root of " << c << " through the Newton-Raphson method..." << endl;
 
-    result = MySquareRoot(c);
+    result = NRRoot(c);
     cout<< "The square root of " << c << " is " << result << endl;
     return 0;
 }
@@ -35,33 +35,28 @@ int main(){
 float prompt_loop(float &c){
 
     //Prompt-loop for to retrieve and sanitise the input
-    cout << "Welcome! This program estimates the square root of the integer c, where 1<=c<=100. What is the value of c?" << endl;
+    cout << "Welcome! This program uses the Newton-Raphson method to estimate the root of any number c, where c>=0. What is the value of c?" << endl;
     while (true) {
         cin >> c;
-        if (c >= 1 && c <= 100){
+        if (c >= 0){
             break;
         }
-        cout << "Input invalid! c must be an integer within the domain of 1 to 100. Please try again." << endl;
+        cout << "Input invalid! c must be greater than or equal to 0. Please try again." << endl;
     }
     return c;
 }
 
 
-float MySquareRoot(float square){
-    float lower, upper, root, sign, f_lower, f_estimate;
-    lower = 0.1f;
-    upper = 10.1f;
-    for (int i = 0; i < 30; i++){
-        root = (lower + upper) / 2.0f;
-        f_lower = square - pow(lower, 2);
-        f_estimate = square - pow(root, 2);
-        sign = f_lower * f_estimate;
-        if (sign < 0){
-            upper = root;
-        }
-        else {
-            lower = root;
-        }
+float NRRoot(float square){
+    float root, f_root, f_prime;
+
+    root = 1 + 0.5*square;                     //From the binomial expansion approximation (1+x)^n ~= 1 + nx for small x
+
+    for (int i = 0; i < 30; i++){             // 100 iterations
+        f_root = square - pow(root, 2);       // f(x) = c - x^2
+        f_prime = -2*root;                   // f'(x) = -2x
+        root = root - (f_root/f_prime);     // p(i+1) = p(i) - (f(p(i))/f'(p(i)))
+        cout<< "Current iteration: " << i+1 << " ; Current estimate: " << root << endl;
     }
     return root;
 }

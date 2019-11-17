@@ -35,13 +35,13 @@ int main(){
 float prompt_loop(float &c){
 
     //Prompt-loop for to retrieve and sanitise the input
-    cout << "Welcome! This program estimates the square root of the integer c, where 1<=c<=100. What is the value of c?" << endl;
+    cout << "Welcome! This program estimates the square root of the number c, where 1<=c<=100. What is the value of c?" << endl;
     while (true) {
         cin >> c;
         if (c >= 1 && c <= 100){
             break;
         }
-        cout << "Input invalid! c must be an integer within the domain of 1 to 100. Please try again." << endl;
+        cout << "Input invalid! c must be a number within the domain of 1 to 100. Please try again." << endl;
     }
     return c;
 }
