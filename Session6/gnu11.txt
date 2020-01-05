@@ -1,0 +1,26 @@
+## called by load 'gnu10'
+## displays 4 balls in a one-dimensional box
+
+set multiplot
+set origin 0.1,0.1
+plot\
+ '/tmp/1' every 1::t::t u 3:4 w p ps 1 pt 1,\
+ '/tmp/1' every 1::t::t u 5:6 w p ps 5 pt 6,\
+ '/tmp/1' every 1::t::t u 7:8 w p ps 5 pt 6,\
+ '/tmp/1' every 1::t::t u 9:10 w p ps 5 pt 6,\
+ '/tmp/1' every 1::t::t u 11:12 w p ps 5 pt 6,\
+ '/tmp/1' every 1::t::t u 13:14 w p ps 1 pt 1
+
+ set origin 0.1,0.5
+plot\
+ '/tmp/1' every 1::t::t u 3:(0.0) w p ps 1 pt 1,\
+ '/tmp/1' every 1::t::t u 5:(0.0) w p ps 5 pt 6,\
+ '/tmp/1' every 1::t::t u 7:(0.0) w p ps 5 pt 6,\
+ '/tmp/1' every 1::t::t u 9:(0.0) w p ps 5 pt 6,\
+ '/tmp/1' every 1::t::t u 11:(0.0) w p ps 5 pt 6,\
+ '/tmp/1' every 1::t::t u 13:(0.0) w p ps 1 pt 1
+ unset multiplot
+ 
+t=t+1;
+pause dt;
+if(t<T) call 'gnu11.txt'

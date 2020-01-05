@@ -1,0 +1,35 @@
+clear
+reset
+set key off
+set border 3
+
+# Add a vertical dotted line at x=0 to show centre (mean) of distribution.
+set yzeroaxis
+
+# Each bar is half the (visual) width of its x-range.
+set boxwidth 0.05 absolute
+set style fill solid 1.0 noborder
+
+bin_width = 0.1;
+
+bin_number(x) = floor(x/bin_width)
+
+rounded(x) = bin_width * ( bin_number(x) + 0.5 )
+
+
+set multiplot layout 1,2
+
+gauss1(x)=a/(sigma*sqrt(2.*pi))*exp(-(x)**2./(2.*sigma**2))
+
+fit gauss1(x) 'tmp/1' using (rounded($9)):(9) via a, sigma
+
+plot 'tmp/1' using (rounded($9)):(9) smooth frequency with boxes, gauss1(x)
+
+gauss2(x)=a/(sigma*sqrt(2.*pi))*exp(-(x)**2./(2.*sigma**2))
+
+fit gauss2(x) 'tmp/1' using (rounded($19)):(19) via a, sigma
+
+plot 'tmp/1' using (rounded($19)):(19) smooth frequency with boxes, gauss2(x)
+
+
+unset multiplot
