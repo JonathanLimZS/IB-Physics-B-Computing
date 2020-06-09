@@ -1,5 +1,5 @@
 # IB-Physics-B-Computing
-Computational Project for Michaelmas Term 
+Computational Project for Michaelmas Term 2019
 
 This is an ongoing self-assessed project, that spans the entirety of Michaelmas Term 2019. There are 6 sessions in total.
 
